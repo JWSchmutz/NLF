@@ -1,148 +1,157 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 	Alpha by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <script type="module">
-	// Import the functions you need from the SDKs you need
-	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
 
-	// TODO: Add SDKs for Firebase products that you want to use
-	// https://firebase.google.com/docs/web/setup#available-libraries
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-	// Your web app's Firebase configuration
-	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-	const firebaseConfig = {
-		apiKey: "AIzaSyC8Vz6SLKDEpL6kLnZL8bE0nFFv6qn1xsI",
-		authDomain: "new-life-farm.firebaseapp.com",
-		projectId: "new-life-farm",
-		storageBucket: "new-life-farm.appspot.com",
-		messagingSenderId: "335485654223",
-		appId: "1:335485654223:web:c2304689b8ba5488f0d3ba",
-		measurementId: "G-80CW52BQ02"
-	};
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyC8Vz6SLKDEpL6kLnZL8bE0nFFv6qn1xsI",
+    authDomain: "new-life-farm.firebaseapp.com",
+    projectId: "new-life-farm",
+    storageBucket: "new-life-farm.appspot.com",
+    messagingSenderId: "335485654223",
+    appId: "1:335485654223:web:c2304689b8ba5488f0d3ba",
+    measurementId: "G-80CW52BQ02",
+  };
 
-	// Initialize Firebase
-	const app = initializeApp(firebaseConfig);
-	const analytics = getAnalytics(app);
-	import { getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"
-	const db = getFirestore()
-	var ref = doc(db, "other-produce", "year")
-	const docSnap = await getDoc(ref)
-	document.getElementById("year").innerText = (docSnap.data().current)
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    collection,
+    addDoc,
+    updateDoc,
+    deleteDoc,
+    deleteField,
+  } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+  const db = getFirestore();
+  var ref = doc(db, "other-produce", "year");
+  const docSnap = await getDoc(ref);
+  document.getElementById("year").innerText = docSnap.data().current;
 
-	var ref = doc(db, "other-produce", "produce")
-	const produceSnap = await getDoc(ref)
-	const produce = produceSnap.data()
-	for (const produceName in produce) {
-		const newTr = document.createElement("tr")
-		const newTdName = document.createElement("td")
-		const newTdPrice = document.createElement("td")
-		newTdName.innerText = produceName;
-		newTdPrice.innerText = produce[produceName]
-		newTr.append(newTdName, newTdPrice)
-		document.getElementById("other-produce").append(newTr)
-		console.log(`${produceName}: ${produce[produceName]}`)
-	}
-	// document.getElementById("year").innerText = (docSnap.data().current)
+  var ref = doc(db, "other-produce", "produce");
+  const produceSnap = await getDoc(ref);
+  const produce = produceSnap.data();
+  for (const produceName in produce) {
+    const newTr = document.createElement("tr");
+    const newTdName = document.createElement("td");
+    const newTdPrice = document.createElement("td");
+    newTdName.innerText = produceName;
+    newTdPrice.innerText = produce[produceName];
+    newTr.append(newTdName, newTdPrice);
+    document.getElementById("other-produce").append(newTr);
+    console.log(`${produceName}: ${produce[produceName]}`);
+  }
+  // document.getElementById("year").innerText = (docSnap.data().current)
 
-	// app.get
-		// .get()
-		// .ref(
-		// 	"games/" +
-		// 	window.location.href.substring(
-		// 		window.location.href.lastIndexOf("/") + 1
-		// 	)
-		// )
-		// .on("value", function (snap) {
-		// 	setGame(snap.val());
-		// });
+  // app.get
+  // .get()
+  // .ref(
+  // 	"games/" +
+  // 	window.location.href.substring(
+  // 		window.location.href.lastIndexOf("/") + 1
+  // 	)
+  // )
+  // .on("value", function (snap) {
+  // 	setGame(snap.val());
+  // });
 </script>
 <html>
+  <head>
+    <title>New Life Farm - Other Produce</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" type="image/png" href="images/blueberry.png" />
 
-<head>
-	<title>Generic - Alpha by HTML5 UP</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<style>
-		table {
-			font-family: arial, sans-serif;
-			border-collapse: collapse;
-			width: 100%;
-		}
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
 
-		td,
-		th {
-			border: 1px solid #dddddd;
-			text-align: left;
-			padding: 8px;
-		}
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
 
-		th {
-			font-size: 24px !important;
-		}
+      th {
+        font-size: 24px !important;
+      }
 
-		tr:nth-child(even) {
-			background-color: #dddddd;
-		}
-	</style>
-</head>
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
 
-<body class="is-preload">
-	<div id="page-wrapper">
+  <body class="is-preload">
+    <div id="page-wrapper">
+      <!-- Header -->
+      <!-- Header -->
+      <header id="header">
+        <h1><a href="index.html">New Life Farm</a>, South Carolina</h1>
+        <nav id="nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="other.html">Other Produce</a></li>
+          </ul>
+        </nav>
+      </header>
 
-		<!-- Header -->
-		<!-- Header -->
-		<header id="header">
-			<h1><a href="index.html">New Life Farm</a>, South Carolina</h1>
-			<nav id="nav">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="other.html">Other Produce</a></li>
-				</ul>
-			</nav>
-		</header>
+      <!-- Main -->
+      <section id="main" class="container">
+        <header>
+          <h2>New Life Farm</h2>
+          <p>Other produce</p>
+        </header>
+        <div class="box">
+          <h3 id="year"></h3>
+          <table id="other-produce">
+            <tr>
+              <th>Produce</th>
+              <th>Price</th>
+            </tr>
+          </table>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer id="footer">
+        <ul class="copyright">
+          <li>&copy; New Life Farm. All rights reserved.</li>
+          <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+      </footer>
+    </div>
 
-		<!-- Main -->
-		<section id="main" class="container">
-			<header>
-				<h2>New Life Farm</h2>
-				<p>Other produce</p>
-			</header>
-			<div class="box">
-				<h3 id="year"></h3>
-				<table id="other-produce">
-					<tr>
-						<th>Produce</th>
-						<th>Price</th>
-					</tr>
-				</table>
-			</div>
-		</section>
-		<!-- Footer -->
-		<footer id="footer">
-			<ul class="copyright">
-				<li>&copy; New Life Farm. All rights reserved.</li>
-				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-			</ul>
-		</footer>
-
-
-	</div>
-
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.dropotron.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-
-</body>
-
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
