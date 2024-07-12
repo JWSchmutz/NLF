@@ -79,6 +79,20 @@
 	}
 
 /* Basic */
+#message{
+	text-align: center;
+	background-color: rgb(255, 177, 177);
+	color:black;
+	position: relative;
+	bottom: 10px;
+	border-radius: 5px;
+	font-size: 18px;
+	padding: 5px;
+}
+#message a{
+	text-decoration: underline;
+	color:black;
+}
 
 	@-ms-viewport {
 		width: device-width;
